@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> should render a white heading by default 1`] = `
+<h1
+  class="sc-bczRLJ kltQOJ"
+>
+  Won Games
+</h1>
+`;
+
+exports[`<Heading /> should render the heading 1`] = `
+<h1
+  class="sc-bczRLJ kltQOJ"
+>
+  test heading
+</h1>
+`;
+
+exports[`<Heading /> should render the heading 2`] = `
+<h1
+  class="sc-bczRLJ kltQOJ"
+>
+  Won Games
+</h1>
+`;
