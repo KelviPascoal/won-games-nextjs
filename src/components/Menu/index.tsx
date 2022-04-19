@@ -6,18 +6,41 @@ import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2';
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 import { useState } from 'react';
 import Button from 'components/Button';
+import { MediaMatch } from 'components/MediaMatch';
 
-export function Menu() {
+export type MenuProps = {
+  userName?: string;
+};
+
+export function Menu({ userName }: MenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <S.Wrapper>
-      <S.IconWrapper onClick={() => setIsOpen(true)}>
-        <MenuIcon aria-label="Open Menu" />
-      </S.IconWrapper>
+      <MediaMatch lessThan="medium">
+        <S.IconWrapper onClick={() => setIsOpen(true)}>
+          <MenuIcon aria-label="Open Menu" />
+        </S.IconWrapper>
+      </MediaMatch>
+
       <S.LogoWrapper>
         <Logo hideOnMobile />
       </S.LogoWrapper>
+
+      <MediaMatch greaterThan="medium">
+        <S.MenuNav>
+          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="#">Explore</S.MenuLink>
+
+          {!!userName && (
+            <>
+              <S.MenuLink href="#">My account</S.MenuLink>
+              <S.MenuLink href="#">Wishlist</S.MenuLink>
+            </>
+          )}
+        </S.MenuNav>
+      </MediaMatch>
+
       <S.MenuGroup>
         <S.IconWrapper>
           <SearchIcon aria-label="Search" />
@@ -25,6 +48,9 @@ export function Menu() {
         <S.IconWrapper>
           <ShoppingCartIcon aria-label="Open shopping cart" />
         </S.IconWrapper>
+        <MediaMatch greaterThan="medium">
+          {!userName && <Button>sign in</Button>}
+        </MediaMatch>
       </S.MenuGroup>
 
       <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
@@ -32,17 +58,25 @@ export function Menu() {
         <S.MenuNav>
           <S.MenuLink href="#">Home</S.MenuLink>
           <S.MenuLink href="#">Explore</S.MenuLink>
-        </S.MenuNav>
 
-        <S.RegisterBox>
-          <Button fullWidth size="large">
-            Log in now
-          </Button>
-          <span>or</span>
-          <S.CreateAccount href="#" title="Sign Up">
-            Sign Up
-          </S.CreateAccount>
-        </S.RegisterBox>
+          {!!userName && (
+            <>
+              <S.MenuLink href="#">My account</S.MenuLink>
+              <S.MenuLink href="#">Wishlist</S.MenuLink>
+            </>
+          )}
+        </S.MenuNav>
+        {!userName && (
+          <S.RegisterBox>
+            <Button fullWidth size="large">
+              Log in now
+            </Button>
+            <span>or</span>
+            <S.CreateAccount href="#" title="Sign Up">
+              Sign Up
+            </S.CreateAccount>
+          </S.RegisterBox>
+        )}
       </S.MenuFull>
     </S.Wrapper>
   );

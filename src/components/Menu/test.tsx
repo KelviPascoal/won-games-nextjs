@@ -30,4 +30,22 @@ describe('<Menu>', () => {
     expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true');
     expect(fullMenuElement).toHaveStyle({ opacity: 0 });
   });
+
+  it('should show registerbox when logged out', () => {
+    render(<Menu />);
+    expect(screen.getByText(/log in now/i)).toBeInTheDocument();
+    expect(screen.getByText(/sign up/i)).toBeInTheDocument();
+
+    expect(screen.queryByText(/My account/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/wishlist/i)).not.toBeInTheDocument();
+  });
+});
+
+it('should show wishlight and account when logged in', () => {
+  render(<Menu userName="Kelvi" />);
+  expect(screen.getByText(/My account/i)).toBeInTheDocument();
+  expect(screen.getByText(/wishlist/i)).toBeInTheDocument();
+
+  expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument();
 });
