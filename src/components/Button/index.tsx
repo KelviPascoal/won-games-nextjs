@@ -1,3 +1,4 @@
+import React from 'react';
 import * as S from './styles';
 
 export type ButtonProps = {
@@ -5,15 +6,24 @@ export type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
   icon?: JSX.Element;
+  onClick?: () => (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const Button = ({
   children,
   size = 'medium',
   fullWidth = false,
-  icon
+  icon,
+  onClick,
+  ...props
 }: ButtonProps) => (
-  <S.Wrapper size={size} fullWidth={fullWidth} hasIcon={!!icon}>
+  <S.Wrapper
+    size={size}
+    fullWidth={fullWidth}
+    hasIcon={!!icon}
+    onClick={onClick}
+    {...props}
+  >
     {!!icon && icon}
     {!!children && <span>{children}</span>}
   </S.Wrapper>
