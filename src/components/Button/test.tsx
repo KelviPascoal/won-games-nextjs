@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react';
 import { AddShoppingCart } from 'styled-icons/material';
 import { theme } from 'styles/theme';
 import { render } from 'utils/renderUtils';
+import userEvent from '@testing-library/user-event';
 
 import Button from '.';
 
@@ -50,5 +51,15 @@ describe('<Button />', () => {
 
     expect(screen.getByText(/buy now/i)).toBeInTheDocument();
     expect(screen.getByTestId('icon')).toBeInTheDocument();
+  });
+
+  it('must have a function to be clicked', () => {
+    const functionTest = jest.fn();
+    render(<Button onClick={functionTest}>Buy now</Button>);
+    const button = screen.getByRole('button', { name: /Buy now/i });
+
+    userEvent.click(button);
+
+    expect(functionTest).toBeCalled();
   });
 });
