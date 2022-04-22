@@ -23,18 +23,31 @@ const wrapperModifiers = {
       border-bottom: 0.4rem solid ${!!lineColor && theme.colors[lineColor]};
       background-color: ${theme.colors[lineColor]};
     }
+  `,
+  small: (theme: DefaultTheme) => css`
+    font-size: ${theme.font.sizes.medium};
+    &::after {
+      width: 3rem;
+    }
+  `,
+  medium: (theme: DefaultTheme) => css`
+    font-size: ${theme.font.sizes.xlarge};
+    ${media.greaterThan('medium')`
+      font-size: ${theme.font.sizes.xxlarge};
+    `}
   `
 };
 
 export const Wrapper = styled.h1<WrapperProps>`
-  ${({ theme, lineDirection, textColor, lineColor }) => css`
+  ${({ theme, lineDirection, textColor, lineColor, fontSize }) => css`
     color: ${!!textColor && theme.colors[textColor]};
-    font-size: ${theme.font.sizes.xlarge};
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.xxlarge};
     `}
     ${!!lineDirection &&
     !!lineColor &&
-    wrapperModifiers[lineDirection](theme, lineColor)}
+    wrapperModifiers[lineDirection](theme, lineColor)};
+
+    ${!!fontSize && wrapperModifiers[fontSize](theme)}
   `}
 `;

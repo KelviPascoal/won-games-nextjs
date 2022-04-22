@@ -6,19 +6,22 @@ export type HeadingProps = {
   textColor?: 'white' | 'black';
   lineDirection?: 'left' | 'bottom';
   lineColor?: 'primary' | 'secondary';
+  fontSize?: 'small' | 'medium';
 };
 
 export function Heading({
   children,
   lineColor = 'primary',
   lineDirection,
-  textColor = 'white'
+  textColor = 'white',
+  fontSize = 'medium'
 }: HeadingProps) {
   return (
     <S.Wrapper
       lineColor={lineColor}
       lineDirection={lineDirection}
       textColor={textColor}
+      fontSize={fontSize}
     >
       {children}
     </S.Wrapper>
