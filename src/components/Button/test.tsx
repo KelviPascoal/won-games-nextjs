@@ -62,4 +62,17 @@ describe('<Button />', () => {
 
     expect(functionTest).toBeCalled();
   });
+
+  it('should render Button as a link', () => {
+    render(
+      <Button as="a" href="/link">
+        Buy now
+      </Button>
+    );
+
+    expect(screen.getByRole('link', { name: /Buy now/i })).toHaveAttribute(
+      'href',
+      '/link'
+    );
+  });
 });
