@@ -39,13 +39,11 @@ describe('<Menu>', () => {
     expect(screen.queryByText(/My account/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/wishlist/i)).not.toBeInTheDocument();
   });
-});
 
-it('should show wishlight and account when logged in', () => {
-  render(<Menu userName="Kelvi" />);
-  expect(screen.getByText(/My account/i)).toBeInTheDocument();
-  expect(screen.getByText(/wishlist/i)).toBeInTheDocument();
+  it('should show wishlight and account when logged in', () => {
+    render(<Menu userName="Kelvi" />);
 
-  expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument();
-  expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument();
+  });
 });
