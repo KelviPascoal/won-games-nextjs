@@ -49,11 +49,6 @@ export const Title = styled.h2`
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.xxlarge};
     `}
-
-    strong {
-      color: ${theme.colors.primary};
-      font-weight: ${theme.font.bold};
-    }
   `}
 `;
 export const Subtitle = styled.h3`
@@ -66,5 +61,10 @@ export const Subtitle = styled.h3`
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.large};
     `}
+
+    strong {
+      color: ${theme.colors.primary};
+      font-weight: ${theme.font.bold};
+    }
   `}
 `;
