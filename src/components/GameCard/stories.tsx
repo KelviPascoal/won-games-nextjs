@@ -27,3 +27,27 @@ Default.args = {
   price: 'R$ 235,00',
   promotionalPrice: 'R$ 200,00'
 };
+Default.argTypes = {
+  onFav: { action: 'clicked' }
+};
+
+export const WithRibbon = (args: GameCardProps) => (
+  <div style={{ maxWidth: '30rem' }}>
+    <GameCard {...args} />;
+  </div>
+);
+
+WithRibbon.parameters = {
+  backgrounds: {
+    default: 'dark'
+  }
+};
+
+WithRibbon.args = {
+  title: 'Population Zero',
+  developer: 'Rockstar Games',
+  img: '/img/project-winter.jpg',
+  price: 'R$ 235,00',
+  promotionalPrice: 'R$ 200,00',
+  ribbon: 'On high'
+};
