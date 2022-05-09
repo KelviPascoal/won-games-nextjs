@@ -7,7 +7,7 @@ import { render as testRender } from '@testing-library/react';
 export function render(children: ReactNode) {
   return testRender(
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
+      <GlobalStyles removeBg={true} />
       {children}
     </ThemeProvider>
   );
