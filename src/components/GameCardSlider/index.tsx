@@ -10,17 +10,14 @@ export type GameCardSliderProps = {
 
 const settings: SliderSettings = {
   slidesToShow: 4,
-  arrows: true,
   infinite: false,
   lazyLoad: 'ondemand',
-  nextArrow: <ArrowRight aria-label="Next games" />,
-  prevArrow: <ArrowLeft aria-label="Previous games" />,
   responsive: [
     {
       breakpoint: 1375,
       settings: {
         arrows: false,
-        slidesToScroll: 3.2
+        slidesToShow: 3.2
       }
     },
     {
@@ -44,7 +41,9 @@ const settings: SliderSettings = {
         slidesToShow: 1.1
       }
     }
-  ]
+  ],
+  nextArrow: <ArrowRight aria-label="next games" />,
+  prevArrow: <ArrowLeft aria-label="previous games" />
 };
 
 export function GameCardSlider({
