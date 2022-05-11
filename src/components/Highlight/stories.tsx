@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Highlight, HighlightProps } from '.';
+import { highlightMock } from './mock';
 
 export default {
   title: 'Highlight',
@@ -9,21 +10,11 @@ export default {
 
 export const Default = (args: HighlightProps) => <Highlight {...args} />;
 
-Default.args = {
-  title: 'Read Dead is back!',
-  subtitle: "Come see John's new adventures",
-  buttonLabel: 'Buy now',
-  buttonLink: '#',
-  backgroundImage: 'img/BackgroundHighlight.svg'
-};
+Default.args = { ...highlightMock };
 
 export const WithFloatImage = (args: HighlightProps) => <Highlight {...args} />;
 
 WithFloatImage.args = {
-  title: 'Read Dead is back!',
-  subtitle: "Come see John's new adventures",
-  buttonLabel: 'Buy now',
-  buttonLink: '#',
-  backgroundImage: 'img/BackgroundHighlight.svg',
+  ...highlightMock,
   floatImage: 'img/Image.png'
 };
