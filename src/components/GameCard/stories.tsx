@@ -16,7 +16,7 @@ export const Default = (args: GameCardProps) => (
 
 Default.parameters = {
   backgrounds: {
-    default: 'dark'
+    default: 'won-dark'
   }
 };
 
@@ -39,7 +39,7 @@ export const WithRibbon = (args: GameCardProps) => (
 
 WithRibbon.parameters = {
   backgrounds: {
-    default: 'dark'
+    default: 'won-dark'
   }
 };
 
